@@ -1,0 +1,90 @@
+/* Importazione di un font pulito e professionale da Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    /* Tavolozza di colori */
+    --colore-primario: #003366;    /* Blu Scuro Istituzionale */
+    --colore-secondario: #F5A623; /* Accento Dorato/Ambra */
+    --colore-sfondo: #F7F7F7;     /* Grigio Chiaro */
+    --colore-testo: #333;         /* Grigio Scuro (leggibilità) */
+    --colore-link: #0056b3;       /* Blu standard per link */
+}
+
+/* Base: reset e font */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--colore-sfondo);
+    color: var(--colore-testo);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra il contenuto */
+}
+
+/* Contenitore principale per centrare il contenuto su schermi grandi */
+body > * {
+    max-width: 900px;
+    width: 100%;
+}
+
+/* Intestazioni Professionali */
+h1 {
+    color: var(--colore-primario);
+    font-weight: 700;
+    text-align: center;
+    border-bottom: 3px solid var(--colore-secondario);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: var(--colore-primario);
+    font-weight: 500;
+    margin-top: 30px;
+    font-size: 1.8em;
+}
+
+/* Paragrafo Introduttivo */
+p {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.1em;
+}
+
+/* Elenco Simulazioni (Lista) */
+ul {
+    list-style: none; /* Rimuove i pallini di default */
+    padding: 0;
+}
+
+li {
+    background-color: #FFF; /* Sfondo bianco per ogni elemento */
+    border: 1px solid #DDD;
+    margin-bottom: 15px;
+    padding: 15px 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Ombra leggera per profondità */
+    transition: transform 0.2s;
+}
+
+li:hover {
+    transform: translateY(-2px); /* Effetto al passaggio del mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Stile per i Link (chiamate all'azione) */
+a {
+    text-decoration: none; /* Rimuove la sottolineatura di default */
+    color: var(--colore-link);
+    font-weight: 500;
+    display: block; /* Rende il link grande come l'intero list item */
+    padding: 5px 0;
+}
+
+a:hover {
+    color: var(--colore-primario); /* Cambia colore al passaggio del mouse */
+    text-decoration: underline;
+}
