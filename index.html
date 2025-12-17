@@ -3,31 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Riservata - Trono Salvatore</title>
     <link rel="stylesheet" href="style.css">
-    <title>Il Mio Sito Trono Salvatore</title>
 </head>
 <body>
-    <h1>Benvenuto sul mio sito web!</h1>
-    <p>Clicca sui link delle simulazioni.</p>
-    
-    <h2>Elenco delle Simulazioni DigiComp 2.2</h2>
-    
-    <ul>
-        <li>
-            <a href="https://trono-slv.github.io/digicomp-area-1/">Simulazione area 1</a>
-        </li>
-        <li>
-            <a href="https://trono-slv.github.io/digicomp_area_2/">Simulazione area 2</a>
-        </li>
-        <li>
-            <a href="https://trono-slv.github.io/digicomp_area_3/">Simulazione area 3</a>
-        </li>
-        <li>
-            <a href="https://trono-slv.github.io/digicomp-2.2---area-4/">Simulazione area 4</a>
-        </li>
-        <li>
-            <a href="https://trono-slv.github.io/digicomp-2.2-Area-5/">Simulazione area 5</a>
-        </li>
-    </ul>
+
+    <div class="container">
+        <div id="login-area" class="login-box">
+            <h1>Accesso Riservato</h1>
+            <p>Inserisci la password per visualizzare le simulazioni</p>
+            
+            <div class="input-group">
+                <input type="password" id="password-input" placeholder="Password di accesso...">
+                <button onclick="checkPassword()" id="login-btn">Accedi</button>
+            </div>
+            
+            <p id="error-msg" class="error-text hidden">⚠️ Password errata. Riprova.</p>
+        </div>
+
+        <div id="content-area" class="hidden">
+            <h1>Simulazioni DigiComp 2.2</h1>
+            <p class="welcome-msg">Benvenuto! Seleziona l'area di studio per iniziare il test.</p>
+            
+            <ul class="quiz-list">
+                <li><a href="https://trono-slv.github.io/digicomp-area-1/" class="quiz-link">Simulazione Area 1</a></li>
+                <li><a href="https://trono-slv.github.io/digicomp_area_2/" class="quiz-link">Simulazione Area 2</a></li>
+                <li><a href="https://trono-slv.github.io/digicomp_area_3/" class="quiz-link">Simulazione Area 3</a></li>
+                <li><a href="https://trono-slv.github.io/digicomp-2.2---area-4/" class="quiz-link">Simulazione Area 4</a></li>
+                <li><a href="https://trono-slv.github.io/digicomp-2.2-Area-5/" class="quiz-link">Simulazione Area 5</a></li>
+            </ul>
+            
+            <button onclick="logout()" class="logout-btn">Esci dall'area riservata</button>
+        </div>
+    </div>
+
+    <script>
+        // Password attuale: Dicembre2025
+        const SECRET_KEY = "Dicembre2025";
+
+        function checkPassword() {
+            const input = document.getElementById('password-input').value;
+            const error = document.getElementById('error-msg');
+            const loginArea = document.getElementById('login-area');
+            const contentArea = document.getElementById('content-area');
+
+            if (input === SECRET_KEY) {
+                loginArea.classList.add('hidden');
+                contentArea.classList.remove('hidden');
+                sessionStorage.setItem('isAuthorized', 'true');
+            } else {
+                error.classList.remove('hidden');
+                document.getElementById('password-input').value = ""; // Pulisce l'input
+            }
+        }
+
+        // Permette l'accesso premendo il tasto "Invio"
+        document.getElementById('password-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        function logout() {
+            sessionStorage.removeItem('isAuthorized');
+            location.reload();
+        }
+
+        // Controllo persistenza durante la sessione
+        window.onload = function() {
+            if (sessionStorage.getItem('isAuthorized') === 'true') {
+                document.getElementById('login-area').classList.add('hidden');
+                document.getElementById('content-area').classList.remove('hidden');
+            }
+        };
+    </script>
 </body>
 </html>
