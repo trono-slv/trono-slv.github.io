@@ -1,90 +1,149 @@
-/* Importazione di un font pulito e professionale da Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-
-:root {
-    /* Tavolozza di colori */
-    --colore-primario: #003366;    /* Blu Scuro Istituzionale */
-    --colore-secondario: #F5A623; /* Accento Dorato/Ambra */
-    --colore-sfondo: #F7F7F7;     /* Grigio Chiaro */
-    --colore-testo: #333;         /* Grigio Scuro (leggibilità) */
-    --colore-link: #0056b3;       /* Blu standard per link */
+/* RESET E BASI */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Base: reset e font */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--colore-sfondo);
-    color: var(--colore-testo);
-    margin: 0;
-    padding: 20px;
-    line-height: 1.6;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+h1 {
+    color: #1a73e8;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    color: #666;
+}
+
+/* BOX DI LOGIN */
+.login-box {
+    padding: 1rem;
+}
+
+.input-group {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra il contenuto */
+    gap: 10px;
 }
 
-/* Contenitore principale per centrare il contenuto su schermi grandi */
-body > * {
-    max-width: 900px;
-    width: 100%;
+input[type="password"] {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
 }
 
-/* Intestazioni Professionali */
-h1 {
-    color: var(--colore-primario);
-    font-weight: 700;
-    text-align: center;
-    border-bottom: 3px solid var(--colore-secondario);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    font-size: 2.5em;
+input[type="password"]:focus {
+    border-color: #1a73e8;
 }
 
-h2 {
-    color: var(--colore-primario);
+button#login-btn {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button#login-btn:hover {
+    background-color: #1557b0;
+}
+
+.error-text {
+    color: #d93025;
+    margin-top: 10px;
+    font-size: 0.9rem;
     font-weight: 500;
-    margin-top: 30px;
-    font-size: 1.8em;
 }
 
-/* Paragrafo Introduttivo */
-p {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 1.1em;
+/* LISTA DELLE SIMULAZIONI */
+.quiz-list {
+    list-style: none;
+    text-align: left;
+    margin-top: 1rem;
 }
 
-/* Elenco Simulazioni (Lista) */
-ul {
-    list-style: none; /* Rimuove i pallini di default */
-    padding: 0;
+.quiz-list li {
+    margin-bottom: 12px;
 }
 
-li {
-    background-color: #FFF; /* Sfondo bianco per ogni elemento */
-    border: 1px solid #DDD;
-    margin-bottom: 15px;
-    padding: 15px 20px;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Ombra leggera per profondità */
-    transition: transform 0.2s;
-}
-
-li:hover {
-    transform: translateY(-2px); /* Effetto al passaggio del mouse */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Stile per i Link (chiamate all'azione) */
-a {
-    text-decoration: none; /* Rimuove la sottolineatura di default */
-    color: var(--colore-link);
+.quiz-link {
+    display: block;
+    text-decoration: none;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    color: #1a73e8;
     font-weight: 500;
-    display: block; /* Rende il link grande come l'intero list item */
-    padding: 5px 0;
+    border: 1px solid #e0e0e0;
+    transition: all 0.2s;
 }
 
-a:hover {
-    color: var(--colore-primario); /* Cambia colore al passaggio del mouse */
+.quiz-link:hover {
+    background: #e8f0fe;
+    border-color: #1a73e8;
+    transform: translateX(5px);
+}
+
+.welcome-msg {
+    font-size: 0.95rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+}
+
+/* UTILITY */
+.hidden {
+    display: none;
+}
+
+.logout-btn {
+    margin-top: 2rem;
+    background: transparent;
+    border: none;
+    color: #888;
     text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.logout-btn:hover {
+    color: #333;
+}
+
+/* ADATTAMENTO MOBILE */
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+    }
 }
